@@ -1,5 +1,7 @@
 # commit-now
 
+[![npm version](https://img.shields.io/npm/v/commit-now.svg)](https://www.npmjs.com/package/commit-now)
+
 AI‑assisted git commit tool (Conventional Commits)
 
 ## Features
@@ -13,7 +15,13 @@ AI‑assisted git commit tool (Conventional Commits)
 
 ## Installation
 
-Clone the repo and install dependencies:
+You can install via [npm](https://www.npmjs.com/package/commit-now):
+
+```sh
+npm install -g commit-now
+```
+
+Or clone the repo and install dependencies with pnpm:
 
 ```sh
 pnpm install
@@ -39,6 +47,12 @@ Or, if you have built to `dist/`:
 node dist/index.js [options]
 ```
 
+Or, if installed globally with npm:
+
+```sh
+cnow [options]
+```
+
 ### Options
 
 -  `-s`, `--short` Generate a short commit message (title only)
@@ -51,7 +65,7 @@ If you run with `-k` or `-m`, the config is updated and the process exits.
 ### Example
 
 ```sh
-pnpm start -- -l
+cnow -l
 ```
 
 ## Configuration
@@ -59,6 +73,7 @@ pnpm start -- -l
 Config is stored in `.config.json` in the same directory as the script (not in your home directory).
 
 -  API key and model are prompted for on first use, or can be set with CLI flags.
+-  **You can get your Lunos API key from [https://lunos.tech/dashboard/api-keys](https://lunos.tech/dashboard/api-keys)**
 
 ## Development
 
@@ -76,3 +91,7 @@ Config is stored in `.config.json` in the same directory as the script (not in y
 ## License
 
 MIT
+
+---
+
+For more details, see the [npm package page](https://www.npmjs.com/package/commit-now).
