@@ -1,6 +1,5 @@
 import { Command } from "commander";
 import inquirer from "inquirer";
-import chalk from "chalk";
 import { readCfg, writeCfg, DEFAULT_MODEL, Config } from "./config";
 
 export function getCliOptions() {
