@@ -2,13 +2,15 @@ import { execSync } from "child_process";
 import chalk from "chalk";
 
 export function stagedDiff(): string {
-   // Check for unstaged changes
-   const unstaged = execSync("git diff --name-only", { encoding: "utf8" });
-   if (unstaged.trim()) {
-      console.log(chalk.yellow("Staging all unstaged changes..."));
+   // Check for unstaged or untracked files
+   const status = execSync("git status --porcelain", { encoding: "utf8" });
+   if (status.trim()) {
+      console.log(
+         chalk.yellow("Staging all unstaged and untracked changes...")
+      );
       execSync("git add -A", { stdio: "inherit" });
    }
-   const diff = execSync("git diff", { encoding: "utf8" });
+   const diff = execSync("git diff --cached", { encoding: "utf8" });
    if (!diff.trim()) {
       console.log(chalk.yellow("No staged changes."));
       process.exit(0);
