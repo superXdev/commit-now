@@ -1,30 +1,28 @@
 import { execSync } from "child_process";
-import chalk from "chalk";
+import pc from "picocolors";
 
 export function stagedDiff(): string {
-   // Check for unstaged or untracked files
-   const status = execSync("git status --porcelain", { encoding: "utf8" });
-   if (status.trim()) {
-      console.log(
-         chalk.yellow("Staging all unstaged and untracked changes...")
-      );
-      execSync("git add -A", { stdio: "inherit" });
-   }
-   const diff = execSync("git diff", { encoding: "utf8" });
-   if (!diff.trim()) {
-      console.log(chalk.yellow("No staged changes."));
-      process.exit(0);
-   }
-   return diff;
+  // Check for unstaged or untracked files
+  const status = execSync("git status --porcelain", { encoding: "utf8" });
+  if (status.trim()) {
+    console.log(pc.yellow("Staging all unstaged and untracked changes..."));
+    execSync("git add -A", { stdio: "inherit" });
+  }
+  const diff = execSync("git diff", { encoding: "utf8" });
+  if (!diff.trim()) {
+    console.log(pc.yellow("No staged changes."));
+    process.exit(0);
+  }
+  return diff;
 }
 
 export function gitCommit(head: string, body?: string, footer?: string) {
-   function wrap(msg?: string) {
-      if (!msg) return undefined;
-      return '"' + msg.replace(/\"/g, '\\"').replace(/"/g, '\\"') + '"';
-   }
-   const args = ["git", "commit", "-m", wrap(head)];
-   if (body) args.push("-m", wrap(body));
-   if (footer) args.push("-m", wrap(footer));
-   execSync(args.join(" "), { stdio: "inherit" });
+  function wrap(msg?: string) {
+    if (!msg) return undefined;
+    return '"' + msg.replace(/\"/g, '\\"').replace(/"/g, '\\"') + '"';
+  }
+  const args = ["git", "commit", "-m", wrap(head)];
+  if (body) args.push("-m", wrap(body));
+  if (footer) args.push("-m", wrap(footer));
+  execSync(args.join(" "), { stdio: "inherit" });
 }

@@ -8,15 +8,15 @@ importers:
 
   .:
     dependencies:
-      chalk:
-        specifier: ^5.4.1
-        version: 5.4.1
       commander:
         specifier: ^14.0.0
         version: 14.0.0
       inquirer:
         specifier: ^12.7.0
         version: 12.7.0(@types/node@24.0.10)
+      picocolors:
+        specifier: ^1.1.1
+        version: 1.1.1
     devDependencies:
       '@types/node':
         specifier: ^24.0.10
@@ -203,10 +203,6 @@ packages:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
     engines: {node: '>=8'}
 
-  chalk@5.4.1:
-    resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
-
   chardet@0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
 
@@ -261,6 +257,9 @@ packages:
     resolution: {integrity: sha512-jtaD65PqzIa1udvSxxscTKBxYKuZoFXyKGLiU1Qjo1ulq3uv/fQDtoV1yey1FrQZrQjACGPi1Widsy1TucC7Jg==}
     engines: {node: '>=8.*'}
     hasBin: true
+
+  picocolors@1.1.1:
+    resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
   prettier@3.6.2:
     resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
@@ -472,8 +471,6 @@ snapshots:
     dependencies:
       color-convert: 2.0.1
 
-  chalk@5.4.1: {}
-
   chardet@0.7.0: {}
 
   cli-width@4.1.0: {}
@@ -526,6 +523,8 @@ snapshots:
       '@oxlint/linux-x64-musl': 1.6.0
       '@oxlint/win32-arm64': 1.6.0
       '@oxlint/win32-x64': 1.6.0
+
+  picocolors@1.1.1: {}
 
   prettier@3.6.2: {}
 
