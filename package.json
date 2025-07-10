@@ -14,7 +14,9 @@
     "conventional-commits",
     "git",
     "ai",
-    "lunos"
+    "lunos",
+    "commit-now",
+    "commit-ai"
   ],
   "scripts": {
     "start": "node dist/index.js",
