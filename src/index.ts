@@ -28,7 +28,13 @@ if (opt.key || opt.model) {
 
 (async () => {
   const { key, model } = await ensureCred(opt, cfg);
-  const diff = stagedDiff();
+  let diff = stagedDiff();
+  const MAX_DIFF_LENGTH = 10000;
+  if (diff.length > MAX_DIFF_LENGTH) {
+    diff =
+      diff.slice(0, MAX_DIFF_LENGTH) +
+      "\n\n--- Diff truncated due to length limit ---";
+  }
 
   let basePrompt;
   if (MODE === "long") {
