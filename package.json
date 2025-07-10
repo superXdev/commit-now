@@ -1,6 +1,6 @@
 {
   "name": "commit-now",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "AI-assisted git commit (Conventional Commits)",
   "author": {
     "name": "Fikri Rudiansyah",
