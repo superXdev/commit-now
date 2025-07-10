@@ -24,7 +24,7 @@ npm install -g commit-now
 Alternatively, clone the repository and install dependencies using pnpm:
 
 ```sh
-git clone https://github.com/your-org/commit-now.git
+git clone https://github.com/superXdev/commit-now.git
 cd commit-now
 pnpm install
 ```
@@ -76,6 +76,7 @@ Configuration is stored in `.config.json` in the same directory as the script (n
 
 - The API key and model are prompted for on first use, or can be set via CLI flags.
 - Obtain your Lunos API key from [https://lunos.tech/dashboard/api-keys](https://lunos.tech/dashboard/api-keys).
+- Model IDs can be found at [https://lunos.tech/models](https://lunos.tech/models). Refer to this page to view and compare available models for your use case.
 
 ## Development
 
