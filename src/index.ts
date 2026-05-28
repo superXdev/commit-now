@@ -63,6 +63,7 @@ Guidelines:
 - Present tense, ≤60‑char subject, no trailing period
 - Body lines ≤72 chars
 - Follow the diff's intent
+- Do not use backtick characters; use single quotes (') instead
 
 Diff:
 ${diff}
@@ -70,6 +71,7 @@ ${diff}
   } else {
     basePrompt = `
 Based on the git diff below, generate ONLY the short Conventional Commit message title (type: short description) in present tense, ≤60 chars, no trailing period. Do NOT include a body or BREAKING CHANGE footer.
+Do not use backtick characters; use single quotes (') instead.
 
 Diff:
 ${diff}
