@@ -8,25 +8,36 @@ import { getCliOptions, ensureCred } from "./cli";
 import { readCfg, writeCfg } from "./config";
 import { stagedDiff, gitCommit } from "./git";
 import { askLunos } from "./lunos";
+import { selectModelInteractively } from "./models";
 import pc from "picocolors";
 
 const opt = getCliOptions();
 const MODE = opt.long ? "long" : "short";
 const cfg = readCfg();
 
-// If -k or -m is provided, update config and exit
-if (opt.key || opt.model) {
-  const newCfg = { ...cfg };
-  if (opt.key) newCfg.apiKey = opt.key;
-  if (opt.model) newCfg.model = opt.model;
-  writeCfg(newCfg);
-  console.log(pc.green("Config updated:"));
-  if (opt.key) console.log("  API key set.");
-  if (opt.model) console.log(`  Model set to: ${opt.model}`);
-  process.exit(0);
-}
-
 (async () => {
+  // If -k or -m is provided, update config and exit
+  if (opt.key || opt.model) {
+    const newCfg = { ...cfg };
+    if (opt.key) newCfg.apiKey = opt.key;
+
+    if (opt.model) {
+      try {
+        newCfg.model = await selectModelInteractively(cfg.model);
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        console.error(pc.red(`Failed to load model list: ${message}`));
+        process.exit(1);
+      }
+    }
+
+    writeCfg(newCfg);
+    console.log(pc.green("Config updated:"));
+    if (opt.key) console.log("  API key set.");
+    if (opt.model) console.log(`  Model set to: ${newCfg.model}`);
+    process.exit(0);
+  }
+
   const { key, model } = await ensureCred(opt, cfg);
   let diff = stagedDiff();
   const MAX_DIFF_LENGTH = 10000;

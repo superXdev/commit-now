@@ -26,6 +26,7 @@
     "cnow": "./dist/index.js"
   },
   "dependencies": {
+    "@inquirer/prompts": "^8.5.0",
     "commander": "^14.0.0",
     "inquirer": "^12.7.0",
     "picocolors": "1.1.1"
