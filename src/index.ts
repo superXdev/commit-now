@@ -14,6 +14,7 @@ import pc from "picocolors";
 const opt = getCliOptions();
 const MODE = opt.long ? "long" : "short";
 const cfg = readCfg();
+const normalizeCommitMessage = (text: string) => text.replace(/`/g, "'");
 
 (async () => {
   // If -k or -m is provided, update config and exit
@@ -78,7 +79,7 @@ ${diff}
 `;
   }
 
-  let full = await askLunos(key, model, basePrompt, MODE);
+  let full = normalizeCommitMessage(await askLunos(key, model, basePrompt, MODE));
 
   while (true) {
     console.log(pc.cyan("\nProposed commit:\n"));
@@ -110,11 +111,13 @@ ${diff}
       console.log(pc.yellow("Aborted."));
       process.exit(0);
     }
-    full = await askLunos(
-      key,
-      model,
-      basePrompt + "\n\nPlease regenerate with different wording.",
-      MODE
+    full = normalizeCommitMessage(
+      await askLunos(
+        key,
+        model,
+        basePrompt + "\n\nPlease regenerate with different wording.",
+        MODE
+      )
     );
   }
 })();
