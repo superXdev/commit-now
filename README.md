@@ -75,8 +75,8 @@ cnow -l
 Configuration is stored in `.config.json` in the same directory as the script (not in the user home directory).
 
 - The API key and model are prompted for on first use, or can be set via CLI flags.
-- Obtain your Lunos API key from [https://lunos.tech/dashboard/api-keys](https://lunos.tech/dashboard/api-keys).
-- Model IDs can be found at [https://lunos.tech/models](https://lunos.tech/models). Refer to this page to view and compare available models for your use case.
+- Obtain your Lunos API key from [https://lunosrouter.com/dashboard/api-keys](https://lunosrouter.com/dashboard/api-keys).
+- Model IDs can be found at [https://lunosrouter.com/models](https://lunosrouter.com/models). Refer to this page to view and compare available models for your use case.
 
 ## Development
 

@@ -47,7 +47,7 @@ function toModelOption(model: LunosModel): ModelOption | null {
 }
 
 async function fetchModelOptions(): Promise<ModelOption[]> {
-  const res = await fetch("https://api.lunos.tech/v1/models?input=text&output=text");
+  const res = await fetch("https://api.lunosrouter.com/v1/models?input=text&output=text");
   if (!res.ok) {
     throw new Error(`Unable to fetch models: ${res.status} ${res.statusText}`);
   }

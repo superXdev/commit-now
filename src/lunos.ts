@@ -4,7 +4,7 @@ export async function askLunos(
   prompt: string,
   mode: "long" | "short"
 ): Promise<string> {
-  const res = await fetch("https://api.lunos.tech/v1/chat/completions", {
+  const res = await fetch("https://api.lunosrouter.com/v1/chat/completions", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${key}`,
